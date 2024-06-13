@@ -10,7 +10,7 @@ $(document).ready(function () {
     if (body.hasClass("light-mode")) {
       body.removeClass("light-mode").addClass("dark-mode");
       themeStyle.attr("href", "dark.css");
-
+      $('label.form-check-label[for="language-switch"]').css('color', 'black');
       // Agregar estrellas en modo oscuro
       addStars();
       // Cambiar el ícono a sol (modo claro)
