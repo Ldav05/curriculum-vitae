@@ -11,6 +11,7 @@ $(document).ready(function () {
       body.removeClass("light-mode").addClass("dark-mode");
       themeStyle.attr("href", "dark.css");
       $('label.form-check-label[for="language-switch"]').css('color', 'black');
+      $('nav.navbar').removeClass('navbar-dark bg-dark').addClass('navbar-light bg-light');
       // Agregar estrellas en modo oscuro
       addStars();
       // Cambiar el ícono a sol (modo claro)
@@ -19,7 +20,7 @@ $(document).ready(function () {
     } else {
       body.removeClass("dark-mode").addClass("light-mode");
       themeStyle.attr("href", "light.css");
-
+      $('nav.navbar').removeClass('navbar-light bg-light').addClass('navbar-dark bg-dark');
       // Eliminar estrellas en modo claro
       starsContainer.empty();
       // Cambiar el ícono a luna (modo oscuro)
@@ -89,18 +90,16 @@ $(document).ready(function () {
     </ul>`;
       workSection.find("ul").replaceWith(newList);
       educationSection.find("h2").text("Education");
-      educationSection.find("h5").text("Master's in Computer Science");
-      educationSection.find("p").text("University of XYZ, 2015-2017");
+      educationSection.find("#degree").text("Bachelor's in Systems Engineering");
+      educationSection.find("#pdegree").text("Universidad de la Costa, 2019-2024");
+      educationSection.find("#scrum").text("Certification program in Agile Frameworks");
+      educationSection.find("#pscrum").text("Universidad de la Costa, 2023");
       skillsSection.find("h2").text("Skills");
-      skillsSection.find("h6:nth-of-type(1)").text("JavaScript");
-      skillsSection.find(".progress-bar:nth-of-type(1)").text("90%");
-      skillsSection.find("h6:nth-of-type(2)").text("Python");
-      skillsSection.find(".progress-bar:nth-of-type(2)").text("80%");
       contactSection.find("h2").text("Contact");
       contactSection
         .find("p")
         .html(
-          'Email: <a href="mailto:luisgordon@example.com">luisgordon@example.com</a>'
+          'Email: <a href="mailto:luisdgordon@gmail.com">luisdgordon@gmail.com</a>'
         );
       $("#language-switch").next().text("English");
     } else {
@@ -129,31 +128,25 @@ $(document).ready(function () {
         .text("Maestría en Ciencias de la Computación");
       educationSection.find("p").text("Universidad de XYZ, 2015-2017");
       skillsSection.find("h2").text("Habilidades");
-      skillsSection.find("h6:nth-of-type(1)").text("JavaScript");
-      skillsSection.find(".progress-bar:nth-of-type(1)").text("90%");
-      skillsSection.find("h6:nth-of-type(2)").text("Python");
-      skillsSection.find(".progress-bar:nth-of-type(2)").text("80%");
-      contactSection.find("h2").text("Contacto");
+      contactSection.find("#h2contact").text("Contacto")
       contactSection
         .find("p")
         .html(
-          'Correo electrónico: <a href="mailto:luisgordon@example.com">luisgordon@example.com</a>'
+          'Correo electrónico: <a href="mailto:luisdgordon@gmail.com">luisdgordon@gmail.com</a>'
         );
       $("#language-switch").next().text("Español");
     }
   });
 
   // Botón para volver al principio
-  const scrollToTopButton = $("#scroll-to-top");
+  const floatButtons = $("#float-buttos");
+  
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
-      scrollToTopButton.fadeIn();
+      floatButtons.fadeIn();
     } else {
-      scrollToTopButton.fadeOut();
+      floatButtons.fadeOut();
     }
   });
-  scrollToTopButton.click(function () {
-    $("html, body").animate({ scrollTop: 0 }, 800);
-    return false;
-  });
+  
 });
