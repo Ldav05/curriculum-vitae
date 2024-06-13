@@ -214,7 +214,7 @@ function downloadFile(url) {
 // Crear un elemento <a> temporal
 var link = document.createElement('a');
 link.href = url;
-link.target = "_blank"; // Abrir en una nueva pestaña si es necesario
+// link.target = "_blank"; // Abrir en una nueva pestaña si es necesario
 document.body.appendChild(link);
 link.click();
 document.body.removeChild(link);
