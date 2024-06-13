@@ -202,30 +202,20 @@ $(document).ready(function () {
 });
 
 $("#download-pdf").click(function() {
-  const pdfUrl = "https://ldav05.github.io/curriculum-vitae/LuisGordonCV.pdf";
+   // Enlace de descarga compartido desde Google Drive
+   const fileUrl = 'https://drive.usercontent.google.com/uc?id=1m_ss_Kh7f-Kvl3aA9sZJgN5LqGhNhsRI&export=download';
 
-  $.ajax({
-      url: pdfUrl,
-      dataType: 'blob',
-      success: function(data) {
-          const reader = new FileReader();
-          reader.onload = function(event) {
-              const pdfData = new Uint8Array(event.target.result);
-              const doc = new jsPDF();
-              doc.text("Luis Gordon - CV", 10, 10);
-
-
-              const content = doc.splitTextToSize(reader.result, 180);
-              doc.text(content, 10, 20);
-
-
-              doc.save("Luis_Gordon_CV.pdf");
-          };
-          reader.readAsArrayBuffer(data);
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-          console.error("Error al descargar el archivo:", errorThrown);
-      }
-  });
+   // Realizar la descarga del archivo
+   downloadFile(fileUrl);
 });
 
+
+function downloadFile(url) {
+// Crear un elemento <a> temporal
+var link = document.createElement('a');
+link.href = url;
+link.target = "_blank"; // Abrir en una nueva pestaña si es necesario
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+}
