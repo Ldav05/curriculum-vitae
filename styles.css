@@ -99,3 +99,21 @@ body {
 .btn-container button {
     margin-right: 10px;
 }
+
+
+
+  /* Define the keyframes for the circular transition */
+@keyframes circularTransition {
+    0% {
+      clip-path: circle(0% at var(--x) var(--y));
+    }
+    100% {
+      clip-path: circle(150% at var(--x) var(--y));
+    }
+  }
+  
+  /* Apply the circular transition */
+  .transition-effect {
+    animation: circularTransition 0.5s ease-in-out forwards;
+  }
+  

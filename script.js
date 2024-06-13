@@ -6,28 +6,43 @@ $(document).ready(function () {
   const languageToggle = $("#language-toggle"); // Nuevo botón de cambio de idioma
   const starsContainer = $("#stars"); // Contenedor de estrellas
 
-  themeToggle.click(function () {
-    if (body.hasClass("light-mode")) {
-      body.removeClass("light-mode").addClass("dark-mode");
-      themeStyle.attr("href", "dark.css");
-      $('label.form-check-label[for="language-switch"]').css('color', 'black');
-      $('nav.navbar').removeClass('navbar-dark bg-dark').addClass('navbar-light bg-light');
-      // Agregar estrellas en modo oscuro
-      addStars();
-      // Cambiar el ícono a sol (modo claro)
-      var icon = themeToggle.find(".bi");
-      icon.removeClass("bi-moon").addClass("bi-sun");
-    } else {
-      body.removeClass("dark-mode").addClass("light-mode");
-      themeStyle.attr("href", "light.css");
-      $('nav.navbar').removeClass('navbar-light bg-light').addClass('navbar-dark bg-dark');
-      // Eliminar estrellas en modo claro
-      starsContainer.empty();
-      // Cambiar el ícono a luna (modo oscuro)
-      var icon = themeToggle.find(".bi");
-      icon.removeClass("bi-sun").addClass("bi-moon");
-    }
-  });
+  themeToggle.click(function (event) {
+    // Obtén la posición del botón relativo a la ventana del navegador
+    var offset = $(this).offset();
+    var x = offset.left + ($(this).outerWidth() / 2) - $(window).scrollLeft();
+    var y = offset.top + ($(this).outerHeight() / 2) - $(window).scrollTop();
+
+    // Ajusta las coordenadas para la animación
+    body.css('--x', x + 'px').css('--y', y + 'px').addClass("transition-effect");
+
+    setTimeout(function() {
+        if (body.hasClass("light-mode")) {
+            body.removeClass("light-mode").addClass("dark-mode");
+            themeStyle.attr("href", "dark.css");
+            $('#languageSW').css('color', 'black');
+            $('nav.navbar').removeClass('navbar-dark bg-dark').addClass('navbar-light bg-light');
+            addStars();
+            var icon = themeToggle.find(".bi");
+            icon.removeClass("bi-moon").addClass("bi-sun");
+        } else {
+            body.removeClass("dark-mode").addClass("light-mode");
+            themeStyle.attr("href", "light.css");
+            $('#languageSW').css('color', 'white');
+            $('nav.navbar').removeClass('navbar-light bg-light').addClass('navbar-dark bg-dark');
+            starsContainer.empty();
+            var icon = themeToggle.find(".bi");
+            icon.removeClass("bi-sun").addClass("bi-moon");
+        }
+
+        body.on('animationend', function() {
+            body.removeClass("transition-effect");
+        });
+
+    }, 0);
+});
+
+
+
 
   function addStars() {
     const numStars = 300; // Ajustar la cantidad de estrellas
