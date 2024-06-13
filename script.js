@@ -202,7 +202,7 @@ $(document).ready(function () {
 });
 
 $("#download-pdf").click(function() {
-  const pdfUrl = "curriculum-vitae\files\LuisGordonCV.pdf";
+  const pdfUrl = "https://ldav05.github.io/curriculum-vitae/LuisGordonCV.pdf";
 
   $.ajax({
       url: pdfUrl,
