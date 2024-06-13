@@ -87,6 +87,24 @@ $(document).ready(function () {
 
     // Si el switch está marcado, cambiar a inglés
     if (!$(this).is(":checked")) {
+      
+      var texts = {
+        'Acerca de': 'About',
+        'Trabajo': 'Work',
+        'Educación': 'Education',
+        'Habilidades': 'Skills',
+        'Contacto': 'Contact'
+    };
+
+
+    $('.navbar-nav.ms-auto li.nav-item').each(function() {
+        var originalText = $(this).find('a.nav-link').text().trim();
+        var newText = texts[originalText];
+        if (newText) {
+            $(this).find('a.nav-link').text(newText);
+        }
+    });
+
       aboutSection.find("h1").text("About Me");
       aboutSection
         .find("p")
@@ -118,12 +136,29 @@ $(document).ready(function () {
         );
       $("#language-switch").next().text("English");
     } else {
-      // Si el switch no está marcado, cambiar a español
-      aboutSection.find("h1").text("Acerca de Mí");
+
+      var texts = {
+        'About': 'Sobre Mí',
+        'Work': 'Trabajo',
+        'Education': 'Educación',
+        'Skills': 'Habilidades',
+        'Contact': 'Contacto'
+    };
+
+
+    $('.navbar-nav.ms-auto li.nav-item').each(function() {
+        var originalText = $(this).find('a.nav-link').text().trim();
+        var newText = texts[originalText];
+        if (newText) {
+            $(this).find('a.nav-link').text(newText);
+        }
+    });
+
+      aboutSection.find("h1").text("Sobre Mí");
       aboutSection
         .find("p")
         .text(
-          "Hola, soy Luis Gordon, un apasionado Ingeniero de Sistemas con experiencia en desarrollo de aplicaciones web, generación de reportes informativos y atención al cliente. He trabajado en el desarrollo de aplicaciones, proporcionando soluciones tecnológicas que respaldan las estrategias y decisiones de la gerencia general. Mis contribuciones han tenido un impacto positivo en la producción y rentabilidad de la empresa. Soy organizado, motivado y comprometido con la resolución de problemas. Además, me destaco por ser responsable, puntual y respetuoso, con una excelente capacidad de adaptación y trabajo en equipo. Curso Básico de Algoritmos y Pensamiento Lógico Curso Profesional de Git y GitHub"
+          "Hola, soy Luis Gordon, un apasionado Ingeniero de Sistemas con experiencia en desarrollo de aplicaciones web, generación de reportes informativos y atención al cliente. He trabajado en el desarrollo de aplicaciones, proporcionando soluciones tecnológicas que respaldan las estrategias y decisiones de la gerencia general. Mis contribuciones han tenido un impacto positivo en la producción y rentabilidad de la empresa. Soy organizado, motivado y comprometido con la resolución de problemas. Además, me destaco por ser responsable, puntual y respetuoso, con una excelente capacidad de adaptación y trabajo en equipo."
         );
       workSection.find("h2").text("Experiencia Laboral");
       workSection.find("h4").text("Baterías Willard S.A.");
@@ -138,10 +173,10 @@ $(document).ready(function () {
     workSection.find("ul").replaceWith(newListEs);
 
       educationSection.find("h2").text("Educación");
-      educationSection
-        .find("h5")
-        .text("Maestría en Ciencias de la Computación");
-      educationSection.find("p").text("Universidad de XYZ, 2015-2017");
+      educationSection.find("#degree").text("Ingeniería de Sistemas");
+      educationSection.find("#pdegree").text("Universidad de la Costa, 2019-2024");
+      educationSection.find("#scrum").text("Diplomado en Marcos Ágiles");
+      educationSection.find("#pscrum").text("Universidad de la Costa, 2023");
       skillsSection.find("h2").text("Habilidades");
       contactSection.find("#h2contact").text("Contacto")
       contactSection
@@ -153,7 +188,7 @@ $(document).ready(function () {
     }
   });
 
-  // Botón para volver al principio
+
   const floatButtons = $("#float-buttos");
   
   $(window).scroll(function () {
@@ -165,3 +200,32 @@ $(document).ready(function () {
   });
   
 });
+
+$("#download-pdf").click(function() {
+  const pdfUrl = "curriculum-vitae\files\LuisGordonCV.pdf";
+
+  $.ajax({
+      url: pdfUrl,
+      dataType: 'blob',
+      success: function(data) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+              const pdfData = new Uint8Array(event.target.result);
+              const doc = new jsPDF();
+              doc.text("Luis Gordon - CV", 10, 10);
+
+
+              const content = doc.splitTextToSize(reader.result, 180);
+              doc.text(content, 10, 20);
+
+
+              doc.save("Luis_Gordon_CV.pdf");
+          };
+          reader.readAsArrayBuffer(data);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+          console.error("Error al descargar el archivo:", errorThrown);
+      }
+  });
+});
+

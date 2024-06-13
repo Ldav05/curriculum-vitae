@@ -1,7 +1,8 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Courier New', Courier, monospace; /* Fuente tipo máquina de escribir */
     position: relative;
 }
+
 
 .progress-bar {
     transition: width 1s ease-in-out;
@@ -20,15 +21,46 @@ body {
 .navbar {
     border-radius: 20px;
     margin-top: 20px;
-    /* Espacio entre la barra de navegación y la parte superior */
     background-color: black;
     color: rgb(255, 255, 255);
-    /* Color de fondo del navbar en modo claro */
+
 }
 
 .navbar.light-mode {
     background-color: rgb(255, 255, 255);
     color: black;
+}
+.navbar-nav.ms-auto {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.navbar-nav.ms-auto li {
+    margin: 0 10px; /* Ajusta el margen entre cada elemento del menú */
+    position: relative;
+}
+
+.navbar-nav.ms-auto li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -5px; /* Ajusta la posición de la línea vertical */
+    transform: translateY(-50%);
+    height: 12px; /* Ajusta la altura de la línea vertical */
+    width: 1px; /* Grosor de la línea vertical */
+    background-color: #fff; /* Color de la línea vertical */
+}
+
+.form-check.form-switch {
+    margin-left: 20px; /* Ajusta el margen entre el menú y el switch */
+    display: flex;
+    align-items: center;
+}
+
+.form-check-label {
+    color: white;
+    margin-left: 5px;
 }
 
 #container {
@@ -88,7 +120,7 @@ body {
     cursor: pointer;
 }
 
-/* Estilos para el contenedor de los botones */
+
 .btn-container {
     position: fixed;
     bottom: 20px;
@@ -102,7 +134,7 @@ body {
 
 
 
-  /* Define the keyframes for the circular transition */
+
 @keyframes circularTransition {
     0% {
       clip-path: circle(0% at var(--x) var(--y));
@@ -112,7 +144,6 @@ body {
     }
   }
   
-  /* Apply the circular transition */
   .transition-effect {
     animation: circularTransition 0.5s ease-in-out forwards;
   }
