@@ -203,7 +203,7 @@ $(document).ready(function () {
 
 $("#download-pdf").click(function() {
    // Enlace de descarga compartido desde Google Drive
-   const fileUrl = 'https://drive.usercontent.google.com/uc?id=1m_ss_Kh7f-Kvl3aA9sZJgN5LqGhNhsRI&export=download';
+   const fileUrl = 'https://drive.usercontent.google.com/u/0/uc?id=1Tn4ZJudFYU-JDH4PzwrwA5PxISgl4zRA&export=download';
 
    // Realizar la descarga del archivo
    downloadFile(fileUrl);
