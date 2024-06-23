@@ -1,6 +1,6 @@
-# **🎓 INGENIERO DE SISTEMAS 🎓**
+# ** LUIS GORDON **
 
-## **L U I S  G O R D O N**
+
 
 - 📞 **Teléfono:** +57 3005989651   
 - 📧 **Email:** [luisdgordon@gmail.com](mailto:luisdgordon@gmail.com)   
