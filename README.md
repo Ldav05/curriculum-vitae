@@ -2,7 +2,7 @@
 
 
 
-- 📞 **Teléfono:** +57 3005989651   
+<!-- - 📞 **Teléfono:** +57 3005989651    -->
 - 📧 **Email:** [luisdgordon@gmail.com](mailto:luisdgordon@gmail.com)   
 - 📍 **Ubicación:** Barranquilla - Colombia
 
