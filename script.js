@@ -3,11 +3,11 @@ $(document).ready(function () {
   const body = $("body");
   const themeStyle = $("#theme-style");
   const downloadBtn = $("#download-pdf");
-  const languageToggle = $("#language-toggle"); // Nuevo botón de cambio de idioma
-  const starsContainer = $("#stars"); // Contenedor de estrellas
+  const languageToggle = $("#language-toggle");
+  const starsContainer = $("#stars"); 
 
   themeToggle.click(function (event) {
-    // Obtén la posición del botón relativo a la ventana del navegador
+
     var offset = $(this).offset();
     var x = offset.left + ($(this).outerWidth() / 2) - $(window).scrollLeft();
     var y = offset.top + ($(this).outerHeight() / 2) - $(window).scrollTop();
@@ -77,7 +77,6 @@ $(document).ready(function () {
     doc.save("Luis_Gordon_CV.pdf");
   });
 
-  // Función para cambiar el idioma con el switch
   $("#language-switch").change(function () {
     const aboutSection = $("#about");
     const workSection = $("#work");
@@ -85,7 +84,6 @@ $(document).ready(function () {
     const skillsSection = $("#skills");
     const contactSection = $("#contact");
 
-    // Si el switch está marcado, cambiar a inglés
     if (!$(this).is(":checked")) {
       
       var texts = {
@@ -214,7 +212,6 @@ function downloadFile(url) {
 // Crear un elemento <a> temporal
 var link = document.createElement('a');
 link.href = url;
-// link.target = "_blank"; // Abrir en una nueva pestaña si es necesario
 document.body.appendChild(link);
 link.click();
 document.body.removeChild(link);
